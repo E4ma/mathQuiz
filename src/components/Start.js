@@ -18,9 +18,9 @@ const Start = ({props}) => {
  
     return (
         <Intro>
-            <h1>Do you know your Math?</h1>
+            <h1>Are you a Math Whiz?</h1>
             <h4>Take Quiz.</h4>
-            <Button onClick={startQuiz} css={btnCSS}>Quiz</Button>
+            <Button onClick={startQuiz} css={btnCSS}>Start</Button>
         </Intro>
     )
 }

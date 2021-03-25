@@ -65,7 +65,7 @@ const Quiz = () => {
 
     useEffect(() => {
 
-        axios.get('https://opentdb.com/api.php?amount=5&category=19')
+        axios.get('https://opentdb.com/api.php?amount=10&category=19')
             .then(res => {
                 setQuiz(res.data.results.map(item => (
 
