@@ -2,6 +2,7 @@
   "name": "quiz",
   "version": "0.1.0",
   "author": "E4ma",
+  "homepage": "https://e4ma.github.io/mathQuiz",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.5",
