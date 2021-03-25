@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { css } from 'styled-components/macro'
-import Button from './Button';
+import Button from './Button'
 
 const Intro = styled.div`
   margin-top: 8em;
