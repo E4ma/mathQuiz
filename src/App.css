@@ -6,7 +6,7 @@
 
 body, html {
   background-color: #101427;
-  color: #e2e2e2;
+  color: #F3F3F3;
   overflow-x: hidden;
 
   font-family: 'Montserrat', sans-serif;
@@ -16,3 +16,4 @@ body, html {
 h1, h4 {
   margin: .5em;
 }
+

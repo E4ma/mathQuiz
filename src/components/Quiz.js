@@ -27,20 +27,34 @@ const Option = styled.button`
     text-decoration: none;
     color: #616A94;
     background-color: #161A31;
-    transition: 0.3s;
+    position: relative;
     font-size: 1em;
-    outline: none;
     user-select: none;
+    outline: none;
     margin-top: 1em;
     cursor: pointer;
-    
+    overflow: hidden;
+    z-index: 1;
     @media screen and (min-width: 1180px) {
         &:hover {
             color: white;
             background-color: #616A94;
         }
     }
+    &:before {
+        content: "";
+        position: absolute;
+        left: var(--x);
+        top: var(--y);
+        transform: translate(-50%, -50%);
+        background-image: radial-gradient(circle closest-side, #ff7a00, transparent);
+        width: 0; height: 0;
+        transition: width 0.3s ease, height 0.3s ease;
+        z-index: -1;
+      }
+      &:hover::before { width: 250px; height: 250px; }
 `;
+
 
 const Question = styled.div`
     width: 70%;
@@ -84,6 +98,15 @@ const Quiz = () => {
 
     //going to use dangerouslySetInnerHTML instead of innerHTML to avoid exposure to cross-site scripting attack
 
+    //direction aware button hover effect
+    const optionsBtn = (e) => {
+        const xPos = e.pageX - e.target.offsetLeft;
+        const yPos = e.pageY - e.target.offsetTop;
+
+        e.target.style.setProperty("--x", `${xPos}px`);
+        e.target.style.setProperty("--y", `${yPos}px`);
+    }
+
     return (
         <QuizWindow>
             { quiz[number] &&
@@ -93,14 +116,14 @@ const Quiz = () => {
 
                     <Options>
                         {quiz[number].options.map((item, index) => (
-                            <Option key={index} dangerouslySetInnerHTML={{ __html: item }} onClick={pickAnswer}></Option>
+                            <Option key={index} dangerouslySetInnerHTML={{ __html: item }} onClick={pickAnswer}onMouseMove={optionsBtn}></Option>
                         ))}
                     </Options>
                 </>
 
             }
             {
-                number === 5 && <GameOver pts={pts} />
+                number === 10 && <GameOver pts={pts} />
             }
         </QuizWindow>
     )
